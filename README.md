@@ -1,54 +1,165 @@
-# hastebin-app
+# 📋 Hastebin App
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern, fast, and elegant pastebin application built with Vue 3, TypeScript, and Tailwind CSS. Share code snippets, text, and documents with clean URLs and a beautiful interface.
 
-## Recommended IDE Setup
+## ✨ Features
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- 🚀 **Fast & Lightweight** - Built with Vue 3 and Vite for optimal performance
+- 📝 **Code Editor** - Monaco-style editor with line numbers and syntax highlighting
+- 🔗 **Clean URLs** - Share with simple URLs like `/abc123`
+- ⌨️ **Keyboard Shortcuts** - Quick actions with familiar shortcuts
+- 📱 **Responsive Design** - Works perfectly on desktop and mobile
+- 🎨 **Modern UI** - Clean interface built with Tailwind CSS
+- 🔒 **Read-only Views** - Shared pastes are automatically read-only
 
-## Recommended Browser Setup
+## 🎮 Keyboard Shortcuts
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+| Shortcut       | Action                      |
+| -------------- | --------------------------- |
+| `Cmd/Ctrl + S` | Save current paste          |
+| `Cmd/Ctrl + B` | Create new paste bin        |
+| `Tab`          | Insert 4 spaces (in editor) |
 
-## Type Support for `.vue` Imports in TS
+## 🚀 Quick Start
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### Prerequisites
 
-## Customize configuration
+- Node.js 20+
+- pnpm (recommended) or npm
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Installation
 
-## Project Setup
+```bash
+# Clone the repository
+git clone <repository-url>
+cd hastebin-app
 
-```sh
+# Install dependencies
 pnpm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Start development server
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The app will be available at `http://localhost:5173`
 
-```sh
-pnpm build
+## 🛠️ Development
+
+### Project Structure
+
+```
+src/
+├── App.vue              # Main application component
+├── apiRequest.ts        # API client for backend communication
+├── main.ts             # Application entry point
+├── styles.css          # Global styles
+├── assets/
+│   └── components/     # Reusable Vue components
+│       ├── ButtonGroup.vue
+│       ├── InputGroup.vue
+│       └── LineNumbers.vue
+└── __tests__/          # Test files
+    └── App.spec.ts
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Available Scripts
 
-```sh
-pnpm test:unit
+```bash
+# Development
+pnpm dev              # Start dev server with hot reload
+pnpm build            # Build for production
+pnpm preview          # Preview production build
+
+# Testing & Quality
+pnpm test:unit        # Run unit tests with Vitest
+pnpm lint             # Run ESLint and Oxlint
+pnpm format           # Format code with Prettier
+pnpm type-check       # TypeScript type checking
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## 🔧 Configuration
 
-```sh
-pnpm lint
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_APP_API_URL=http://localhost:3000/api
 ```
+
+### API Endpoints
+
+The app expects the following API endpoints:
+
+- `GET /paste/:id` - Retrieve a paste by ID
+- `POST /paste` - Create a new paste
+
+#### Request/Response Types
+
+```typescript
+// Create paste request
+interface PasteRequest {
+  content: string
+  language?: string
+  author?: string
+}
+
+// Paste response
+interface PasteResponse {
+  id: string
+  content: string
+  language?: string
+  author?: string
+  createdAt: string
+}
+```
+
+## 🏗️ Tech Stack
+
+- **Framework**: Vue 3 (Composition API)
+- **Language**: TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Testing**: Vitest + Vue Test Utils
+- **Linting**: ESLint + Oxlint
+- **Formatting**: Prettier
+
+## 📱 Usage
+
+1. **Creating a Paste**:
+   - Visit the homepage (`/`)
+   - Type or paste your content
+   - Optionally add language and author metadata
+   - Press `Cmd/Ctrl + S` to save
+   - Get a shareable URL like `/abc123`
+
+2. **Viewing a Paste**:
+   - Visit any paste URL (e.g., `/abc123`)
+   - Content is automatically read-only
+   - Use `Cmd/Ctrl + N` to create a new paste
+
+3. **Starting Fresh**:
+   - Press `Cmd/Ctrl + N` from anywhere in the app
+   - Clears content and returns to edit mode
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Vue 3](https://vuejs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Powered by [Vite](https://vitejs.dev/)
+
+---
+
+Made with ❤️ for the developer community
